@@ -25,7 +25,7 @@
         <div class="form-group row">
           <label class="col-sm-2">Sub Category Name</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control @error('subcategory_name') is-invalid @enderror" name="category_name" placeholder="Sub Category name" value="{{old('subcategory_name')}}">
+            <input type="text" class="form-control @error('subcategory_name') is-invalid @enderror" name="subcategory_name" placeholder="Sub Category name" value="{{old('subcategory_name')}}">
             @error('subcategory_name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
