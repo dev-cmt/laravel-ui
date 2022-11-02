@@ -26,15 +26,15 @@ class SubcategoryController extends Controller
     public function subcategory_store(Request $request)
     {
         $validated=$request -> validate([
-            'category_id'=> 'required',
+            'categories_id'=> 'required',
             'subcategory_name'=> 'required|unique:subcategories|max:255',
         ]);
 
         // //-------Eloquent ORM (3)
         $subcategory= new Subcategory();
-        $subcategory->category_id=$request->category_id;
+        $subcategory->categories_id=$request->categories_id;
         $subcategory->subcategory_name=$request->subcategory_name;
-        $subcategory->subcategory_name=Str::of($request->subcategory_name)->slug('-');
+        $subcategory->subcategory_slug=Str::of($request->subcategory_name)->slug('-');
         $subcategory->save();
 
         // $subcategory=array(
