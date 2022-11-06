@@ -109,10 +109,15 @@
 
 <!-- Start Toaster & Sweetalert -->
 <script src="{{ asset('public/backend/plugins/toaster/js/toastr.min.js')}}"></script>
-<script src="{{ asset('public/backend/plugins/toaster/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('public/backend/plugins/tonodeaster/js/sweetalert.min.js') }}"></script>
 
 <script>
   @if(Session::has('messege'))
+  toastr.options =
+  {
+  	"closeButton" : true,
+  	"progressBar" : true
+  }
     var type="{{Session::get('alert-type','info')}}"
     switch(type){
         case 'info':
