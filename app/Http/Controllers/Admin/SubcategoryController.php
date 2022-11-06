@@ -26,25 +26,45 @@ class SubcategoryController extends Controller
     public function subcategory_store(Request $request)
     {
         $validated=$request -> validate([
-            'category_id'=> 'required',
+            'categories_id'=> 'required',
             'subcategory_name'=> 'required|unique:subcategories|max:255',
         ]);
 
         // //-------Eloquent ORM (3)
         $subcategory= new Subcategory();
-        $subcategory->category_id=$request->category_id;
+        $subcategory->categories_id=$request->categories_id;
         $subcategory->subcategory_name=$request->subcategory_name;
-        $subcategory->subcategory_name=Str::of($request->subcategory_name)->slug('-');
+        $subcategory->subcategory_slug=Str::of($request->subcategory_name)->slug('-');
         $subcategory->save();
 
-        // $subcategory=array(
-        //     'categories_id'=> $request->categories_id,
-        //     'subcategory_name'=> $request->subcategory_name,
-        //     'subcategory_slug'=> Str::of($request->subcategory_name)->slug('-'),
-        // );
-        // DB::table('subcategories')->insert($subcategory);
-        
-        $notification=array('messege'=>'SEO Setting Updated!','alert-type'=>'success');
+        $notification=array('messege'=>'Sub Category Add Successfully!','alert-type'=>'success');
+        return redirect()->back()->with($notification);
+    }
+    public function subcategory_edit($id)
+    {
+        $category=Category::all();
+        $data=Subcategory::find($id);
+
+        return view('admin.subcategory.edit',compact('category','data'));
+    }
+    public function subcategory_update(Request $request, $id)
+    {
+        // //-------Eloquent ORM (3)
+        $subcategory= Subcategory::find($id);
+        $subcategory->categories_id=$request->categories_id;
+        $subcategory->subcategory_name=$request->subcategory_name;
+        $subcategory->subcategory_slug=Str::of($request->subcategory_name)->slug('-');
+        $subcategory->save();
+
+        $notification=array('messege'=>'Updated successfully!','alert-type'=>'success');
+        return redirect()->route('subcategory.index')->with($notification);
+    }
+    public function subcategory_destroy($id)
+    {
+        //-------Eloquent ORM (3)
+        Category::destroy($id);
+
+        $notification=array('messege'=>'Delete successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
 }
