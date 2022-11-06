@@ -37,34 +37,14 @@ class SubcategoryController extends Controller
         $subcategory->subcategory_slug=Str::of($request->subcategory_name)->slug('-');
         $subcategory->save();
 
-        $notification=array('messege'=>'Sub Category Add Successfully!','alert-type'=>'success');
-        return redirect()->back()->with($notification);
-    }
-    public function subcategory_edit($id)
-    {
-        $category=Category::all();
-        $data=Subcategory::find($id);
-
-        return view('admin.subcategory.edit',compact('category','data'));
-    }
-    public function subcategory_update(Request $request, $id)
-    {
-        // //-------Eloquent ORM (3)
-        $subcategory= Subcategory::find($id);
-        $subcategory->categories_id=$request->categories_id;
-        $subcategory->subcategory_name=$request->subcategory_name;
-        $subcategory->subcategory_slug=Str::of($request->subcategory_name)->slug('-');
-        $subcategory->save();
-
-        $notification=array('messege'=>'Updated successfully!','alert-type'=>'success');
-        return redirect()->route('subcategory.index')->with($notification);
-    }
-    public function subcategory_destroy($id)
-    {
-        //-------Eloquent ORM (3)
-        Category::destroy($id);
-
-        $notification=array('messege'=>'Delete successfully!','alert-type'=>'success');
+        // $subcategory=array(
+        //     'categories_id'=> $request->categories_id,
+        //     'subcategory_name'=> $request->subcategory_name,
+        //     'subcategory_slug'=> Str::of($request->subcategory_name)->slug('-'),
+        // );
+        // DB::table('subcategories')->insert($subcategory);
+        
+        $notification=array('messege'=>'SEO Setting Updated!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
 }
