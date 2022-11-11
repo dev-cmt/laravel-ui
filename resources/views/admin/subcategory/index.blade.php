@@ -34,9 +34,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Category Name</th>
                             <th>Sub Category Name</th>
                             <th>Sub Category Slug</th>
+                            <th>Category Name</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -46,9 +46,10 @@
                                 <th>{{++$key}}</th>
                                 <td>{{$row->subcategory_name}}</td>
                                 <td>{{$row->subcategory_slug}}</td>
+                                <td>{{$row->category->category_name}}</td>
                                 <td class="text-center">
-                                    {{-- <a class="btn btn-sm btn-outline-success" href="{{route('category.edit', $row ->id)}}">Edit</a> --}}
-                                    {{-- <a class="btn btn-sm btn-outline-danger" id="delete" href="{{route('category.destroy', $row ->id)}}">Delete</a> --}}
+                                    <a class="btn btn-sm btn-outline-success" href="{{route('subcategory.edit', $row ->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-outline-danger" id="delete" href="{{route('subcategory.destroy', $row ->id)}}">Delete</a>
                                 </td>
                             </tr>  
                         @endforeach

@@ -62,7 +62,7 @@ Route::get('/category/destroy/{id}', [CategoryController::class, 'category_destr
 //_________________End_____________//
 
 
-// //_____________Category___________//
+// //_____________Sub Category___________//
 Route::get('/index/subcategory', [SubcategoryController::class, 'subcategory_index'])->name('subcategory.index');
 Route::get('/category/subcategory', [SubcategoryController::class, 'subcategory_create'])->name('subcategory.create');
 Route::post('/category/subcategory', [SubcategoryController::class, 'subcategory_store'])->name('subcategory.store');
