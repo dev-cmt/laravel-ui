@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +39,8 @@ Route::get('/email/verify', function () {
 //______________End______________//
 
 
-//_____Login and verification______//
-//error not show just use
+/////_____Login and verification______//
+//------error not show just use
 Route::post('/resent-email', [App\Http\Controllers\HomeController::class, 'resend'])->name('verification.resend');
 Route::get('/deposite/money', [App\Http\Controllers\HomeController::class, 'deposite'])->name('deposite.money')->middleware('verified');
 
@@ -51,25 +52,36 @@ Route::get('/user/details/{id}', [App\Http\Controllers\HomeController::class, 'd
 //_________________End_____________//
 
 
-// //_____________Category___________//
-Route::get('/index/category', [CategoryController::class, 'category_index'])->name('category.index');
-Route::get('/category/create', [CategoryController::class, 'category_create'])->name('category.create');
-Route::post('/category/store', [CategoryController::class, 'category_store'])->name('category.store');
+/////_____________ Category ___________//
+Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 
-Route::get('/category/edit/{id}', [CategoryController::class, 'category_edit'])->name('category.edit');
-Route::post('/category/update/{id}', [CategoryController::class, 'category_update'])->name('cateory.update');
-Route::get('/category/destroy/{id}', [CategoryController::class, 'category_destroy'])->name('category.destroy');
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('cateory.update');
+Route::get('/category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 //_________________End_____________//
 
 
-// //_____________Sub Category___________//
-Route::get('/index/subcategory', [SubcategoryController::class, 'subcategory_index'])->name('subcategory.index');
-Route::get('/category/subcategory', [SubcategoryController::class, 'subcategory_create'])->name('subcategory.create');
-Route::post('/category/subcategory', [SubcategoryController::class, 'subcategory_store'])->name('subcategory.store');
+/////_____________ Sub Category ___________//
+Route::get('/subcategory/index', [SubcategoryController::class, 'index'])->name('subcategory.index');
+Route::get('/subcategory/create', [SubcategoryController::class, 'create'])->name('subcategory.create');
+Route::post('/subcategory/store', [SubcategoryController::class, 'store'])->name('subcategory.store');
 
-Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'subcategory_edit'])->name('subcategory.edit');
-Route::post('/subcategory/update/{id}', [SubcategoryController::class, 'subcategory_update'])->name('subcategory.update');
-Route::get('/subcategory/destroy/{id}', [SubcategoryController::class, 'subcategory_destroy'])->name('subcategory.destroy');
+Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+Route::post('/subcategory/update/{id}', [SubcategoryController::class, 'update'])->name('subcategory.update');
+Route::get('/subcategory/destroy/{id}', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
+//_________________End_____________//
+
+
+/////_____________ Post ___________//
+Route::get('/post/index', [PostController::class, 'index'])->name('post.index');
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+
+Route::get('/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
+Route::get('/post/destroy/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 //_________________End_____________//
 
 

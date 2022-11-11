@@ -10,13 +10,14 @@ class Subcategory extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'categories_id',
+        'category_id',
         'subcategory_name',
         'subcategory_slug',
     ];
 
+    //________ Join Category _______//
     public function category()
     {
-        return $this->belongsTo(Category::class,'categories_id');
+        return $this->belongsTo(Category::class,'category_id');
     }
 }

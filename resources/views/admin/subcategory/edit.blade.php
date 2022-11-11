@@ -15,9 +15,9 @@
         <div class="form-group row">
           <label class="col-sm-2">Category Name</label>
           <div class="col-sm-6">
-            <select name="categories_id" class="form-control">
+            <select name="category_id" class="form-control">
               @foreach ($category as $row)
-                <option value="{{$row->id}}" @if ($row->id==$data->categories_id) selected  @endif>{{ $row->category_name }}</option>
+                <option value="{{$row->id}}" @if ($row->id==$data->category_id) selected  @endif>{{ $row->category_name }}</option>
               @endforeach
             </select>
           </div>

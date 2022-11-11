@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
+use App\Models\Subcategory;
+use App\Models\User;
+
+class Post extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'category_id',
+        'subcategory_id',
+        'title',
+        'slug',
+        'post_date',
+        'image',
+        'description',
+    ];
+
+    //________ Join Category _______//
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+    //________ Join Sub Category _______//
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class,'subcategory_id');
+    }
+    //________ Join User _______//
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+}

@@ -10,7 +10,7 @@ use DB;
 
 class CategoryController extends Controller
 {
-    public function category_index()
+    public function index()
     {
         //-------Queary Builder (1)
         // $category=DB::table('categories')->get();
@@ -20,12 +20,12 @@ class CategoryController extends Controller
         return view('admin.category.index',compact('category'));
     }
     //=====_________  Create  ________=====//
-    public function category_create()
+    public function create()
     {
         return view('admin.category.create');
     }
     
-    public function category_store(Request $request)
+    public function store(Request $request)
     {
         $validated=$request -> validate([
             'category_name'=> 'required|unique:categories|max:255',
@@ -53,12 +53,12 @@ class CategoryController extends Controller
         $category->category_slug=Str::of($request->category_name)->slug('-');
         $category->save();
         
-        $notification=array('messege'=>'SEO Setting Updated!','alert-type'=>'success');
+        $notification=array('messege'=>'Category save successfully!','alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
 
     //=====_________  Edit  ________=====//
-    public function category_edit($id)
+    public function edit($id)
     {
         //-------Queary Builder
         // $category=DB::table('categories')->where('id',$id)->first();
@@ -68,7 +68,7 @@ class CategoryController extends Controller
 
         return view('admin.category.edit',compact('category'));
     }
-    public function category_update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         //-------Queary Builder (1)
         // $category=Category::find($id);
@@ -83,9 +83,10 @@ class CategoryController extends Controller
         $category->category_slug=Str::of($request->category_name)->slug('-');
         $category->save();
 
-        return redirect()->route('category.index');
+        $notification=array('messege'=>'Sub category updated successfully!','alert-type'=>'success');
+        return redirect()->route('category.index')->with($notification);
     }
-    public function category_destroy($id)
+    public function destroy($id)
     {
         //-------Queary Builder (1)
         // DB::table('categories')->where('id',$id)->delete();
