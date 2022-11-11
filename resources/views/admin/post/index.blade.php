@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">DataTable with Category</h3>
+                  <h3 class="card-title">DataTable with Post</h3>
                   <div class="d-flex justify-content-end">
                     <a href="{{route('category.create')}}" class="text-white btn btn-outline-info py-1">Add New</a>
                   </div>
@@ -37,20 +37,22 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Sub Category Name</th>
+                            <th>Sub Category Slug</th>
                             <th>Category Name</th>
-                            <th>Category Slug</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($category as $key=> $row )
+                        @foreach ($subcategory as $key=> $row )
                             <tr>
                                 <th>{{++$key}}</th>
-                                <td>{{$row->category_name}}</td>
-                                <td>{{$row->category_slug}}</td>
+                                <td>{{$row->subcategory_name}}</td>
+                                <td>{{$row->subcategory_slug}}</td>
+                                <td>{{$row->category->category_name}}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-sm btn-outline-success" href="{{route('category.edit', $row ->id)}}">Edit</a>
-                                    <a class="btn btn-sm btn-outline-danger" id="delete" href="{{route('category.destroy', $row ->id)}}">Delete</a>
+                                    <a class="btn btn-sm btn-outline-success" href="{{route('subcategory.edit', $row ->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-outline-danger" id="delete" href="{{route('subcategory.destroy', $row ->id)}}">Delete</a>
                                 </td>
                             </tr>  
                         @endforeach

@@ -37,9 +37,12 @@
   @auth()
     
   @endauth
-@include('layouts.partial.sidebar')  
-@include('layouts.partial.topbar')
+    @include('layouts.partial.sidebar')  
+    @include('layouts.partial.topbar')
   
+
+
+  <!--===BODY PARD===-->  
   @yield('content')
 
 

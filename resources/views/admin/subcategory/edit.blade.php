@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
   <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('category.index')}}" class="btn btn-sm btn-primary">Back</a>
+    <a href="{{ route('category.index')}}" class="btn btn-outline-info py-1"><i class="fas fa-angle-left right"></i> Back</a>
   </div>
       
   <div class="card p-4">

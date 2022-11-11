@@ -52,13 +52,13 @@
               <li class="nav-item">
                 <a href="{{route('category.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>All Category</p>
+                  <p>Manage Category</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('category.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
+                  <p>Create Category</p>
                 </a>
               </li>
             </ul>
@@ -74,13 +74,13 @@
               <li class="nav-item">
                 <a href="{{route('subcategory.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Sub Category</p>
+                  <p>Manage Sub Category</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('subcategory.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Sub Category</p>
+                  <p>Create Sub Category</p>
                 </a>
               </li>
             </ul>
@@ -100,7 +100,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('subcategory.create')}}" class="nav-link">
+                <a href="{{route('post.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Post</p>
                 </a>

@@ -11,5 +11,17 @@ use DB;
 
 class PostController extends Controller
 {
-    //
+    public function index()
+    {
+        //-------Eloquent ORM
+        $subcategory=Subcategory::all();
+        return view('admin.subcategory.index',compact('subcategory'));
+    }
+    //=====_________  Create  ________=====//
+    public function create()
+    {
+        //-------Eloquent ORM
+        $category=Category::all();
+        return view('admin.post.create',compact('category'));
+    }
 }
