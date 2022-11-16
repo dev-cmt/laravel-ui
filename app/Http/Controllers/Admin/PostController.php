@@ -24,4 +24,14 @@ class PostController extends Controller
         $category=Category::all();
         return view('admin.post.create',compact('category'));
     }
+    public function store(Request $request)
+    {
+        $validated=$request -> validate([
+            'subcategory_id'=> 'required',
+            ''=> 'required|unique:subcategories|max:255',
+        ]);
+        //-------Eloquent ORM
+        $category=Category::all();
+        return view('admin.post.create',compact('category'));
+    }
 }
